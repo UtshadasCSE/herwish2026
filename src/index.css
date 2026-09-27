@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────────── */
+:root {
+  --color-bg-dark:       #0d0409;
+  --color-bg-plum:       #1a0a14;
+  --color-bg-burgundy:   #2a0e1a;
+  --color-blush:         #f2b8c6;
+  --color-rose:          #d4687a;
+  --color-rose-deep:     #a83050;
+  --color-cream:         #fdf5ee;
+  --color-lavender:      #c9b8d4;
+  --color-gold:          #d4a96a;
+  --color-gold-light:    #f0d4a0;
+  --color-petal:         #f0a8b8;
+
+  --font-display:   'Cormorant Garamond', Georgia, serif;
+  --font-body:      'Jost', system-ui, sans-serif;
+  --font-script:    'Dancing Script', cursive;
+
+  --ease-smooth:    cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-expo:      cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ── Reset / Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-dark);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Film grain overlay ─────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-script  { font-family: var(--font-script); }
+.font-body    { font-family: var(--font-body); }
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--color-bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--color-rose-deep); border-radius: 2px; }
+
+/* ── Glassmorphism utility ──────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Petal animation ────────────────────────────────────────── */
+@keyframes petalFall {
+  0%   { transform: translateY(-10vh) translateX(0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.8; }
+  85%  { opacity: 0.6; }
+  100% { transform: translateY(110vh) translateX(var(--drift, 40px)) rotate(var(--spin, 360deg)); opacity: 0; }
+}
+
+@keyframes petalSway {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(12px); }
+}
+
+.petal {
+  position: absolute;
+  border-radius: 150% 0 150% 0;
+  animation: petalFall var(--duration, 8s) var(--delay, 0s) linear infinite,
+             petalSway 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Particle glow ──────────────────────────────────────────── */
+@keyframes particleFloat {
+  0%   { transform: translateY(0) scale(1);   opacity: 0; }
+  20%  { opacity: var(--op, 0.7); }
+  80%  { opacity: var(--op, 0.7); }
+  100% { transform: translateY(-60px) scale(0.5); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: particleFloat var(--dur, 4s) var(--del, 0s) ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Star twinkle ───────────────────────────────────────────── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50%       { opacity: 0.9; transform: scale(1.2); }
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-gold-light);
+  animation: twinkle var(--dur, 3s) var(--del, 0s) ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Ticker ─────────────────────────────────────────────────── */
+@keyframes tickerLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes tickerRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.ticker-track-left  { animation: tickerLeft  30s linear infinite; }
+.ticker-track-right { animation: tickerRight 35s linear infinite; }
+
+/* ── Moon glow ──────────────────────────────────────────────── */
+@keyframes moonPulse {
+  0%, 100% { box-shadow: 0 0 80px 40px rgba(212,169,106,0.12), 0 0 160px 80px rgba(212,169,106,0.06); }
+  50%       { box-shadow: 0 0 120px 60px rgba(212,169,106,0.18), 0 0 240px 100px rgba(212,169,106,0.1); }
+}
+
+.moon {
+  animation: moonPulse 6s ease-in-out infinite;
+}
+
+/* ── Light leak effect ──────────────────────────────────────── */
+@keyframes lightLeak {
+  0%   { opacity: 0; transform: translateX(-20%) skewX(-10deg); }
+  30%  { opacity: 0.15; }
+  70%  { opacity: 0.08; }
+  100% { opacity: 0; transform: translateX(120%) skewX(-10deg); }
+}
+
+.light-leak {
+  position: absolute;
+  width: 30%;
+  height: 120%;
+  background: linear-gradient(90deg, transparent, rgba(244,200,160,0.3), transparent);
+  animation: lightLeak 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Image placeholder ──────────────────────────────────────── */
+.img-placeholder {
+  background: linear-gradient(135deg, #2a1020 0%, #1a0a14 40%, #2a1530 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Letter paper texture ───────────────────────────────────── */
+.paper-texture {
+  background:
+    linear-gradient(rgba(253,245,238,0.03) 1px, transparent 1px),
+    linear-gradient(135deg, #1a0a14 0%, #0d0409 50%, #1a0812 100%);
+  background-size: 100% 32px, 100% 100%;
+}
+
+/* ── Progress indicator ─────────────────────────────────────── */
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(212,169,106,0.25);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.progress-dot.active {
+  background: var(--color-gold);
+  box-shadow: 0 0 8px rgba(212,169,106,0.6);
+  height: 20px;
+  border-radius: 3px;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .petal, .particle, .star, .ticker-track-left, .ticker-track-right,
+  .light-leak, .moon { animation: none !important; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
