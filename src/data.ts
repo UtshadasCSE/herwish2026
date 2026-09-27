@@ -84,35 +84,14 @@ export const FINAL_MESSAGE = {
   date: '2 \u2022 10 \u2022 2026',
 };
 
-// ── Ticker phrases ────────────────────────────────────────────
-export const TICKER_PHRASES = [
-  '2 OCTOBER', '\u2736', 'HER DAY', '\u2736', 'HAPPY BIRTHDAY PURNIMA', '\u2736',
-  'A BEAUTIFUL SOUL', '\u2736', 'KEEP SMILING', '\u2736', 'KEEP SHINING', '\u2736',
-  'WITH LOVE', '\u2736', 'TODAY IS YOURS', '\u2736',
-];
 
 // ── Audio ─────────────────────────────────────────────────────
 // Place your audio files in /public/audio/ and update these paths.
 // Supported formats: mp3, ogg, wav
 export const AUDIO_TRACKS = [
   {
-    id: 'hero',
-    label: 'Soft Intro',
-    src: '/audio/hero-ambient.mp3',         // Hero / opening — soft piano or ambient
-  },
-  {
-    id: 'photos',
-    label: 'Warm Romance',
-    src: '/audio/romantic-instrumental.mp3', // Photo sections — warm romantic instrumental
-  },
-  {
-    id: 'flowers',
-    label: 'Dreamy Garden',
-    src: '/audio/dreamy-atmosphere.mp3',     // Flower garden — dreamy atmospheric
-  },
-  {
-    id: 'final',
-    label: 'Emotional Close',
-    src: '/audio/emotional-piano.mp3',       // Final section — emotional piano
-  },
+    id: 'main',
+    label: 'Herwish',
+    src: '/audio/herwish.mp3',
+  }
 ];
