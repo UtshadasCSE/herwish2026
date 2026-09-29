@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import EnterOverlay from './components/EnterOverlay';
 import HeroSection from './components/HeroSection';
 import BirthdayMessage from './components/BirthdayMessage';
