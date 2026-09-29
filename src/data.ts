@@ -12,11 +12,10 @@ export const BIRTHDAY_INFO = {
 // ── Images ──────────────────────────────────────────────────
 // Drop Purnima's photos into /public/images/ and update these paths.
 export const IMAGES = [
-  { src: '/images/purnima-01.jpg', alt: 'Purnima — Portrait 1', caption: 'A smile that lights up any room.' },
-  { src: '/images/purnima-02.jpg', alt: 'Purnima — Portrait 2', caption: 'Beautiful, always.' },
-  { src: '/images/purnima-03.jpg', alt: 'Purnima — Portrait 3', caption: 'Soft moments worth remembering.' },
-  { src: '/images/purnima-04.jpg', alt: 'Purnima — Portrait 4', caption: 'The person she is becoming.' },
-  { src: '/images/purnima-05.jpg', alt: 'Purnima — Portrait 5', caption: 'Joy in the little things.' },
+  { src: '/images/purnima_2.png', alt: 'Purnima — Portrait 1', caption: 'A smile that lights up any room.' },
+  { src: '/images/purnima_1.png', alt: 'Purnima — Portrait 2', caption: 'Beautiful, always.' },
+  { src: '/images/purnima_3.png', alt: 'Purnima — Portrait 3', caption: 'Soft moments worth remembering.' },
+  { src: '/images/purnima_4.png', alt: 'Purnima — Portrait 4', caption: 'The person she is becoming.' },
 ];
 
 // ── Quotes ───────────────────────────────────────────────────
@@ -40,11 +39,6 @@ export const QUOTES = [
     id: 'q4',
     text: "May this year bring you closer to everything you've ever wished for.",
     image: IMAGES[3],
-  },
-  {
-    id: 'q5',
-    text: 'Keep being the beautiful person you are.',
-    image: IMAGES[4],
   },
 ];
 

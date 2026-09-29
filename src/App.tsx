@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import EnterOverlay from './components/EnterOverlay';
 import HeroSection from './components/HeroSection';
 import BirthdayMessage from './components/BirthdayMessage';
-import PhotoStory from './components/PhotoStory';
+
 import QuoteSection from './components/QuoteSection';
 import FlowerGarden from './components/FlowerGarden';
 import MemoryCards from './components/MemoryCards';
@@ -17,7 +17,7 @@ import './index.css';
 const SECTIONS = [
   { id: 'hero',     label: 'Welcome' },
   { id: 'message',  label: 'Birthday Message' },
-  { id: 'photos',   label: 'Photo Story' },
+
   { id: 'quotes',   label: 'Quotes' },
   { id: 'flowers',  label: 'Garden' },
   { id: 'memories', label: 'Memories' },
@@ -54,7 +54,7 @@ export default function App() {
       <main id="main-content" style={{ opacity: entered ? 1 : 0, transition: 'opacity 1s ease' }}>
         <HeroSection />
         <BirthdayMessage />
-        <PhotoStory />
+
         <QuoteSection />
         <FlowerGarden />
         <MemoryCards />
