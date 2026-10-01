@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import EnterOverlay from './components/EnterOverlay';
 import HeroSection from './components/HeroSection';
 import BirthdayMessage from './components/BirthdayMessage';
@@ -47,6 +48,7 @@ export default function App() {
 
   return (
     <>
+      <Analytics />
       {/* Enter overlay */}
       {!entered && <EnterOverlay onEnter={handleEnter} />}
 
